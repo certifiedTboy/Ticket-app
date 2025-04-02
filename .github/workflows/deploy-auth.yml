@@ -16,8 +16,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-<<<<<<< HEAD
+
       - run: docker push certifiedtboy/auth
-=======
-      - run: docker tag certifiedtboy/auth
->>>>>>> a9fd0775ae057378ba00d031583d0213efd9bed0
+
+      - run: docker push certifiedtboy/auth
