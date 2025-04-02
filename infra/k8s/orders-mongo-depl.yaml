@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orders-mongo
+  template:
+    metadata:
+      labels:  # ✅ Fixed: Changed from matchLabels to labels
+        app: orders-mongo
+    spec:
+      containers:
+        - name: orders-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-mongo-service  # ✅ Changed service name to match auth-mongo
+spec:
+  selector:
+    app: orders-mongo  # ✅ Fixed: Matched the label from Deployment
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: ClusterIP  # ✅ Added for internal cluster communication
