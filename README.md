@@ -78,6 +78,9 @@ $ docker push docker_username/service_name
 
 # update all .yaml files with the created docker images respectively
 
+# update kubectl necessary env variables such as
+$ kubectl create secret generic jwt-secret --from-literal=JWT_KEY="your key"
+
 # install skaffold to your machine
 https://skaffold.dev/docs/install/#managed-ide
 
